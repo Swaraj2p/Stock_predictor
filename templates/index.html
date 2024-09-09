@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 50px;
+        }
+        input[type="date"], input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Price Predictor</h1>
+    <form method="POST">
+        <label for="ticker">Enter Stock Ticker Symbol:</label>
+        <input type="text" id="ticker" name="ticker" placeholder="e.g., AAPL" required>
+        <br>
+        <label for="date">Enter a Date:</label>
+        <input type="date" id="date" name="date" required>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+
+    <div class="result">
+        {% if predicted_price %}
+            <h2>Predicted Stock Price for {{ ticker }}: {{ predicted_price }}</h2>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
